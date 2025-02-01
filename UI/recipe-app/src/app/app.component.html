@@ -1,0 +1,22 @@
+<div>
+  <header class="p-4 bg-primary text-white">
+    <h1>Recipe Finder</h1>
+    <input type="text" [(ngModel)]="searchText" (input)="onSearchInput()" placeholder="Search for recipes..."
+      class="form-control" />
+    <ul *ngIf="recipes.length > 0" class="list-group mt-2">
+      <li *ngFor="let recipe of recipes" class="list-group-item list-group-item-action" (click)="selectRecipe(recipe)">
+        <strong>{{ recipe.name }}</strong> ({{ recipe.cuisine }})
+      </li>
+    </ul>
+  </header>
+
+  <main class="p-4">
+    <div *ngIf="selectedRecipe">
+      <h2>{{ selectedRecipe.name }}</h2>
+      <img [src]="selectedRecipe.image" alt="{{ selectedRecipe.name }}" class="img-fluid mb-3" [width]="400"  
+      [height]="300"/>
+      <p><strong>Cuisine:</strong> {{ selectedRecipe.cuisine }}</p>
+      <p class="mt-4 text-center">Thank you for visiting!</p>
+    </div>
+  </main>
+</div>

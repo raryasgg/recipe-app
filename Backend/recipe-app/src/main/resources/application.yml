@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: recipe-app
+
+  datasource:
+    url: jdbc:h2:mem:recipeappdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+
+  h2:
+    console:
+      enabled: true
+    path: /h2-console
+
+logging:
+  level:
+    root: INFO
+    com.example.recipe_app: DEBUG
+
+dataset:
+  url: https://dummyjson.com/recipes
+
+server:
+  port: 8080
+  
+resilience4j:
+  circuitbreaker:
+    instances:
+      recipeService:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+  retry:
+    instances:
+      recipeService:
+        max-attempts: 3
+        wait-duration: 1s
+
