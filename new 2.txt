@@ -1,0 +1,30 @@
+Verify Data in H2 Database
+
+URL: http://localhost:8080/h2-console
+Use the following credentials:
+JDBC URL: jdbc:h2:mem:recipeappdb
+Username: sa
+Password: password
+
+
+SELECT * FROM RECIPE;
+
+
+http://localhost:8080/swagger-ui/index.html#/
+
+
+
+/////////////////////////////////
+node -v
+npm -v
+ng --version
+npm install -g @angular/cli
+
+ng new recipe-app
+cd recipe-app
+ng serve
+http://localhost:4200
+
+npm install @angular/common
+ng generate service services/recipe
+
